@@ -67,9 +67,9 @@ def main():
         print(f"❌ Datei nicht gefunden: {args.input}")
         sys.exit(1)
 
-    print(f"📷 Lade: {path}")
+    print(f" Lade: {path}")
     img = Image.open(path)
-    print(f"🎨 Methode: Roboter-Portrait (Zonen-Filter)")
+    print(f"Methode: Roboter-Portrait (Zonen-Filter)")
     print(f"   Zonen: Augen={args.eye_top}–{args.eye_bottom} | Kleidung ab {args.shirt_top}")
     print(f"   Mindestlängen: Augen={args.arc_eye}px | Gesicht={args.arc_face}px | Kleidung={args.arc_shirt}px")
 
@@ -94,12 +94,12 @@ def main():
     )
 
     save_sketch(result, args.output)
-    print(f"✅ Skizze gespeichert: {args.output} ({result.size[0]}×{result.size[1]}px)")
+    print(f" Skizze gespeichert: {args.output} ({result.size[0]}×{result.size[1]}px)")
 
     if args.preview:
         prev_path = Path(args.output).stem + "_preview.png"
         preview.save(prev_path)
-        print(f"👁️  Vorschau gespeichert: {prev_path}")
+        print(f"  Vorschau gespeichert: {prev_path}")
 
 
 if __name__ == "__main__":
