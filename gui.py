@@ -53,7 +53,7 @@ def run_sketch(
     save_sketch(result, save_path)
     
     info = (
-        f"✅ Methode: **{method}** | "
+        f"Methode: **{method}** | "
         f"Ausgabegröße: {result.size[0]}×{result.size[1]}px | "
         f"Gespeichert: `{save_path}`"
     )
@@ -61,9 +61,9 @@ def run_sketch(
 
 
 def build_ui():
-    with gr.Blocks(title="🤖 Sketch-Bot Generator", theme=gr.themes.Soft()) as demo:
+    with gr.Blocks(title="Sketch-Bot Generator", theme=gr.themes.Soft()) as demo:
         gr.Markdown("""
-        # 🤖 Photo-to-Sketch Generator
+        # Photo-to-Sketch Generator
         **Hybrid OpenCV-Pipeline** für den UR5/UFactory Roboter-Input.
         Lade ein Portrait-Foto hoch und erzeuge eine saubere Linienzeichnung.
         """)
@@ -72,7 +72,7 @@ def build_ui():
             # ── Linke Spalte: Input + Controls ──
             with gr.Column(scale=1):
                 image_input = gr.Image(
-                    label="📷 Portrait hochladen",
+                    label="Portrait hochladen",
                     type="numpy",
                     height=300,
                 )
@@ -81,7 +81,7 @@ def build_ui():
                     choices=["Hybrid", "Canny (scharf)", "Pencil Dodge (weich)",
                              "Adaptiv (robust)", "Morphologisch"],
                     value="Hybrid",
-                    label="🎨 Methode",
+                    label="Methode",
                 )
 
                 with gr.Accordion("⚙️ Hybrid-Gewichtung", open=True):
@@ -95,27 +95,27 @@ def build_ui():
                     canny_high = gr.Slider(50, 300, value=100, step=10, label="Canny High Threshold")
                     blur_sigma = gr.Slider(5, 51,   value=21,  step=2,  label="Dodge Blur Sigma")
 
-                with gr.Accordion("🖼️ Bildverarbeitung", open=False):
+                with gr.Accordion("Bildverarbeitung", open=False):
                     clahe_clip  = gr.Slider(0.5, 8.0, value=2.0, step=0.5, label="CLAHE Clip Limit")
                     clahe_grid  = gr.Slider(2, 16,   value=8,   step=2,   label="CLAHE Grid Size")
                     final_threshold = gr.Slider(150, 254, value=230, step=5, label="Finales Threshold")
                     output_size = gr.Slider(256, 2048, value=1024, step=128, label="Ausgabegröße (px)")
 
-                with gr.Accordion("🔀 Extras", open=False):
+                with gr.Accordion("Extras", open=False):
                     invert_output       = gr.Checkbox(value=False,  label="Output invertieren (weiß auf schwarz)")
                     background_removal  = gr.Checkbox(value=True,   label="Hintergrund normieren")
 
-                btn = gr.Button("▶️ Skizze erzeugen", variant="primary", size="lg")
+                btn = gr.Button("Skizze erzeugen", variant="primary", size="lg")
 
             # ── Rechte Spalte: Output ──
             with gr.Column(scale=1):
-                result_image  = gr.Image(label="✏️ Linienzeichnung (Roboter-Input)", type="pil")
-                preview_image = gr.Image(label="👁️ Vorschau: Original | Skizze", type="pil")
+                result_image  = gr.Image(label="Linienzeichnung (Roboter-Input)", type="pil")
+                preview_image = gr.Image(label="Vorschau: Original | Skizze", type="pil")
                 status_text   = gr.Markdown("*Noch kein Bild verarbeitet.*")
 
                 gr.Markdown("""
                 ---
-                ### 📥 Verwendung als Roboter-Input
+                ### Verwendung als Roboter-Input
                 Die erzeugte PNG wird automatisch als `portrait_sketch.png` gespeichert –
                 direkt kompatibel mit dem Sketch-Bot Pipeline-Input (Module 3: Robotic Arm Control).
                 
